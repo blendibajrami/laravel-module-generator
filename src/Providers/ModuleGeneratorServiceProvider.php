@@ -1,6 +1,6 @@
 <?php
 
-namespace Modular\ModuleGenerator;
+namespace Modular\ModuleGenerator\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modular\ModuleGenerator\Commands\MakeModuleModelCommand;
