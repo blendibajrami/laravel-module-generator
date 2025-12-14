@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Modules\{{ module }}\Services;
+
+use App\Modules\{{ module }}\Repositories\Contracts\{{ model }}RepositoryInterface;
+
+class {{ model }}Service
+{
+    public function __construct(
+        protected {{ model }}RepositoryInterface ${{ repositoryCamel }}
+    ) {}
+}

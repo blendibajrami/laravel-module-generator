@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Modules\{{ module }}\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Modules\{{ module }}\Models\{{ model }};
+use App\Modules\{{ module }}\Services\{{ model }}Service;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+class {{ model }}Controller extends Controller
+{
+    use AuthorizesRequests;
+
+    public function __construct(
+        protected {{ model }}Service ${{ modelCamel }}Service
+    ) {}
+}

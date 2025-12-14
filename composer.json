@@ -1,0 +1,23 @@
+{
+  "name": "modular/laravel-module-generator",
+  "description": "Laravel module generator using service and repository pattern",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Modular\\ModuleGenerator\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Modular\\ModuleGenerator\\Providers\\ModuleGeneratorServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^10|^11"
+  },
+  "minimum-stability": "stable"
+}

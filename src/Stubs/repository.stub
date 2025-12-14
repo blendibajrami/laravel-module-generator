@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Modules\{{ module }}\Repositories;
+
+use App\Modules\{{ module }}\Models\{{ model }};
+use App\Modules\{{ module }}\Repositories\Contracts\{{ model }}RepositoryInterface;
+
+class {{ model }}Repository implements {{ model }}RepositoryInterface
+{
+    public function __construct(protected {{ model }} $model) {}
+}
