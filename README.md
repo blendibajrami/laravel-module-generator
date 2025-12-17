@@ -31,6 +31,9 @@ It creates a ready-to-use module structure with Controllers, Models, Requests, R
 Add the repository to your `composer.json`:
 
 ```bash
+ "require": {       
+     "modular/laravel-module-generator": "dev-main"
+    },
 "repositories": [
     {
         "type": "vcs",
