@@ -91,9 +91,9 @@ Modules/
         └── web.php
 
 ```
-Advantages
+## Advantages
 
--Provides ready-to-use code following Laravel conventions.
+- Provides ready-to-use code following Laravel conventions.
 
 -Encourages modular development for better maintainability and scalability.
 
@@ -104,11 +104,11 @@ Advantages
 -Saves development time by automating repetitive tasks.
 
 
-Customizing Stubs
+## Customizing Stubs
 
 All generated code is based on stub files.
 You can modify the stub files in Modules/ModuleGenerator/Stubs/ to adjust the generated code to your project conventions or add new features.
 
-Contributing
+## Contributing
 
 Feel free to open issues or submit pull requests. Contributions are welcome to improve the generator, add new stubs, or enhance compatibility with the latest Laravel versions.
