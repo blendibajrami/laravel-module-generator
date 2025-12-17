@@ -3,18 +3,22 @@
 namespace Modular\ModuleGenerator\Generators;
 
 use Illuminate\Support\Facades\File;
+use Modular\ModuleGenerator\Support\Naming;
 
 class RequestGenerator
 {
     public static function make(string $module, string $model): void
     {
+        $moduleClass = Naming::class($module);
+        $modelClass = Naming::class($model);
+
         $requests = [
-            "Store{$model}Request" => 'store-request.stub',
-            "Update{$model}Request" => 'update-request.stub',
+            "Store{$modelClass}Request" => 'store-request.stub',
+            "Update{$modelClass}Request" => 'update-request.stub',
         ];
 
         foreach ($requests as $class => $stubFile) {
-            $path = app_path("Modules/{$module}/Http/Requests/{$class}.php");
+            $path = app_path("Modules/{$moduleClass}/Http/Requests/{$class}.php");
 
             if (File::exists($path)) continue;
 
@@ -26,7 +30,7 @@ class RequestGenerator
                 $path,
                 str_replace(
                     ['{{ module }}', '{{ class }}'],
-                    [$module, $class],
+                    [$moduleClass, $class],
                     $stub
                 )
             );

@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Modules\{{ module }}\Providers;
+
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class PolicyServiceProvider extends ServiceProvider
+{
+    /**
+     * The policy mappings for the module.
+     *
+     * @var array<class-string, class-string>
+     */
+    protected $policies = [
+        //
+    ];
+
+    /**
+     * Register any authentication / authorization services.
+     */
+    public function boot(): void
+    {
+        $this->registerPolicies();
+    }
+}

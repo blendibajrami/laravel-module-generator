@@ -1,16 +1,18 @@
 <?php
 
-namespace {{namespace}};
+namespace App\Modules\{{ module }}\Repositories\Contracts;
 
-interface {{interface}}
+interface {{ model }}RepositoryInterface
 {
-    public function all();
+    public function all(): object;
 
-    public function find($id);
+    public function find(int $id): object;
 
-    public function create(array $data);
+    public function create(array $data): object;
 
-    public function update($id, array $data);
+    public function update(array $data, int $id): object;
 
-    public function delete($id);
+    public function delete(int $id): void;
+
+    public function allSimple(): object;
 }

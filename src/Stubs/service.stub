@@ -8,5 +8,37 @@ class {{ model }}Service
 {
     public function __construct(
         protected {{ model }}RepositoryInterface ${{ repositoryCamel }}
-    ) {}
+        )
+    {
+    }
+
+    public function all(): object
+    {
+        return $this->{{ repositoryCamel }}->all();
+    }
+
+    public function find(int $id): object
+    {
+        return $this->{{ repositoryCamel }}->find($id);
+    }
+
+    public function create(array $data): object
+    {
+        return $this->{{ repositoryCamel }}->create($data);
+    }
+
+    public function update(array $data, int $id): object
+    {
+        return $this->{{ repositoryCamel }}->update($data, $id);
+    }
+
+    public function delete(int $id): void
+    {
+        $this->{{ repositoryCamel }}->delete($id);
+    }
+
+    public function allSimple(): object
+    {
+        return $this->{{ repositoryCamel }}->allSimple();
+    }
 }

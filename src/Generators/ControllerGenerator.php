@@ -9,10 +9,15 @@ class ControllerGenerator
 {
     public static function make(string $module, string $model): void
     {
-        $controller = "{$model}Controller";
-        $path = app_path("Modules/{$module}/Http/Controllers/{$controller}.php");
+        $moduleClass = Naming::class($module);
+        $modelClass  = Naming::class($model);
 
-        if (File::exists($path)) return;
+        $controller = "{$modelClass}Controller";
+        $path = app_path("Modules/{$moduleClass}/Http/Controllers/{$controller}.php");
+
+        if (File::exists($path)) {
+            return;
+        }
 
         File::ensureDirectoryExists(dirname($path));
 
@@ -29,14 +34,29 @@ class ControllerGenerator
                     '{{ modelPluralCamel }}'
                 ],
                 [
-                    $module,
-                    $model,
+                    $moduleClass,
+                    $modelClass,
                     Naming::camel($model),
                     Naming::plural($model),
-                    Naming::camel(Naming::plural($model))
+                    Naming::pluralCamel($model)
                 ],
                 $stub
             )
         );
+
+        self::ensureRoutes($moduleClass);
+    }
+
+    private static function ensureRoutes(string $module): void
+    {
+        $routesDir = app_path("Modules/{$module}/routes");
+        $webRoute  = "{$routesDir}/web.php";
+
+      
+        File::ensureDirectoryExists($routesDir);
+
+        if (!File::exists($webRoute)) {
+            File::put($webRoute, "<?php\n");
+        }
     }
 }

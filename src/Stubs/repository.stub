@@ -2,10 +2,16 @@
 
 namespace App\Modules\{{ module }}\Repositories;
 
-use App\Modules\{{ module }}\Models\{{ model }};
 use App\Modules\{{ module }}\Repositories\Contracts\{{ model }}RepositoryInterface;
+use App\Modules\{{ module }}\Models\{{ model }};
+use App\Modules\Shared\Repositories\BaseRepository;
 
-class {{ model }}Repository implements {{ model }}RepositoryInterface
+class {{ model }}Repository extends BaseRepository implements {{ model }}RepositoryInterface
 {
-    public function __construct(protected {{ model }} $model) {}
+    public function __construct({{ model }} $model)
+    {
+        $this->model = $model;
+    }
+
+  
 }

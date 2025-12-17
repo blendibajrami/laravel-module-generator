@@ -3,15 +3,91 @@
 namespace App\Modules\{{ module }}\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Modules\{{ module }}\Http\Requests\Store{{ model }}Request;
+use App\Modules\{{ module }}\Http\Requests\Update{{ model }}Request;
+use App\Modules\{{ module }}\Http\Resources\{{ model }}Resource;
 use App\Modules\{{ module }}\Models\{{ model }};
 use App\Modules\{{ module }}\Services\{{ model }}Service;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+// use Inertia\Inertia;
 
 class {{ model }}Controller extends Controller
 {
     use AuthorizesRequests;
 
     public function __construct(
-        protected {{ model }}Service ${{ modelCamel }}Service
+        protected {{ model }}Service ${{ modelCamel }}Service,
     ) {}
+
+    public function index()
+    {
+        ${{ modelPluralCamel }} = {{ model }}Resource::collection(
+            $this->{{ modelCamel }}Service->all()
+        );
+
+       
+        // Inertia
+        // return Inertia::render('{{ modelPlural }} /Index', [
+        //     '{{ modelPluralCamel }}' => ${{ modelPluralCamel }},
+        // ]);
+
+        // Blade
+        // return view('{{ module }}.{{ modelPluralCamel }}.index', compact('{{ modelPluralCamel }}'));
+    }
+
+    public function create()
+    {
+        // Inertia
+        // return Inertia::render('{{ modelPlural }}/Create');
+
+        // Blade
+        // return view('{{ module }}.{{ modelPluralCamel }}.index');
+    }
+
+    public function store(Store{{ model }}Request $request)
+    {
+        $this->{{ modelCamel }}Service->create($request->validated());
+
+        // return redirect()->route('{{ modelPluralCamel }}.index');
+    }
+
+    public function show({{ model }} ${{ modelCamel }})
+    {
+      
+        // Inertia
+        // return Inertia::render('{{ modelPlural }} /Index', [
+        //     '{{ modelCamel }}' => ${{ modelCamel }},
+        // ]);
+
+        // Blade
+        // return view('{{ module }}.{{ modelPluralCamel }}.index', compact('{{ modelCamel }}'));
+    }
+
+    public function edit({{ model }} ${{ modelCamel }})
+    {
+        // Inertia
+        // return Inertia::render('{{ modelPlural }}/Edit', [
+        //     '{{ modelCamel }}' => ${{ modelCamel }},
+        // ]);
+
+         // Blade
+        // return view('{{ module }}.{{ modelPluralCamel }}.edit', compact('{{ modelCamel }}'));
+    }
+
+    public function update(Update{{ model }}Request $request, {{ model }} ${{ modelCamel }})
+    {
+        $this->{{ modelCamel }}Service->update(
+            $request->validated(),
+            ${{ modelCamel }}->id
+        );
+
+        // return redirect()->route('{{ modelPluralCamel }}.index');
+    }
+
+    public function destroy({{ model }} ${{ modelCamel }})
+    {
+        $this->{{ modelCamel }}Service->delete(${{ modelCamel }}->id);
+
+        // return redirect()->route('{{ modelPluralCamel }}.index');
+    }
 }

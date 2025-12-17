@@ -1,23 +1,17 @@
 <?php
 
-namespace {{namespace}};
+namespace App\Modules\{{ module }}\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class {{policy}} 
+class {{ model }}Policy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return bool
+     * Placeholder policy.
+     * 
+     * No authorization logic is applied.
+     * Policies are not enforced unless explicitly used.
      */
-    public function viewAny(User $user)
-    {
-        return true;
-    }
-
-    // Define other policy methods here (create, update, delete, etc.)
 }

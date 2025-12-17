@@ -24,6 +24,7 @@ class MakeModuleModelCommand extends Command
         $module = $this->argument('module');
         $model  = $this->argument('model');
 
+        // Gjenero gjithçka
         ModelGenerator::make($module, $model);
         ControllerGenerator::make($module, $model);
         RequestGenerator::make($module, $model);
@@ -32,5 +33,9 @@ class MakeModuleModelCommand extends Command
         RepositoryGenerator::make($module, $model);
         ServiceGenerator::make($module, $model);
         ProviderGenerator::make($module, $model);
+
+      
+        $this->info("Module '{$module}' with model '{$model}' has been successfully generated!");
+       
     }
 }

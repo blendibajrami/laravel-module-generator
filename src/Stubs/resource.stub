@@ -1,12 +1,12 @@
 <?php
 
-namespace {{namespace}};
+namespace App\Modules\{{ module }}\Http\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class {{model}} extends Model
+class {{ model }}Resource extends Model
 {
     protected $fillable = [
-        // add your fillable fields here
+        
     ];
 }

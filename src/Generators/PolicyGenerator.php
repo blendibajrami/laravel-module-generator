@@ -9,8 +9,11 @@ class PolicyGenerator
 {
     public static function make(string $module, string $model): void
     {
-        $class = "{$model}Policy";
-        $path = app_path("Modules/{$module}/Policies/{$class}.php");
+        $moduleClass = Naming::class($module);
+        $modelClass = Naming::class($model);
+
+        $class = "{$modelClass}Policy";
+        $path = app_path("Modules/{$moduleClass}/Policies/{$class}.php");
 
         if (File::exists($path)) return;
 
@@ -28,10 +31,10 @@ class PolicyGenerator
                     '{{ modelPluralCamel }}'
                 ],
                 [
-                    $module,
-                    $model,
+                    $moduleClass,
+                    $modelClass,
                     Naming::camel($model),
-                    Naming::camel(Naming::plural($model))
+                    Naming::camel(Naming::plural($model)),
                 ],
                 $stub
             )

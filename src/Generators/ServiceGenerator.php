@@ -1,5 +1,4 @@
 <?php
-
 namespace Modular\ModuleGenerator\Generators;
 
 use Illuminate\Support\Facades\File;
@@ -9,8 +8,11 @@ class ServiceGenerator
 {
     public static function make(string $module, string $model): void
     {
-        $class = "{$model}Service";
-        $path = app_path("Modules/{$module}/Services/{$class}.php");
+        $moduleClass = Naming::class($module);
+        $modelClass = Naming::class($model);
+        $class = "{$modelClass}Service";
+
+        $path = app_path("Modules/{$moduleClass}/Services/{$class}.php");
 
         if (File::exists($path)) return;
 
@@ -27,8 +29,8 @@ class ServiceGenerator
                     '{{ repositoryCamel }}'
                 ],
                 [
-                    $module,
-                    $model,
+                    $moduleClass,
+                    $modelClass,
                     Naming::camel("{$model}Repository")
                 ],
                 $stub
