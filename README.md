@@ -95,13 +95,13 @@ Modules/
 
 - Provides ready-to-use code following Laravel conventions.
 
--Encourages modular development for better maintainability and scalability.
+- Encourages modular development for better maintainability and scalability.
 
--Clean separation of concerns via Service & Repository pattern.
+- Clean separation of concerns via Service & Repository pattern.
 
--All generated files are editable and extendable.
+- All generated files are editable and extendable.
 
--Saves development time by automating repetitive tasks.
+- Saves development time by automating repetitive tasks.
 
 
 ## Customizing Stubs
